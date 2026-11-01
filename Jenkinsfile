@@ -1,25 +1,30 @@
-pipeline{
-  agent any
-  stage('Checkout SCM') {
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout SCM') {
             steps {
                 checkout scm
             }
         }
-  stages{
-    stage(Build){
-      steps{
-        echo 'building...'
-      }
+
+        stage('Build') {
+            steps {
+                echo 'building...'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'testing...'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'deploying...'
+            }
+        }
     }
-    stage(Test){
-      steps{
-        echo 'testing...'
-      }
-    }
-    stage(Deploy){
-      steps{
-        echo 'deploying....'
-      }
-    }
-  }
 }
